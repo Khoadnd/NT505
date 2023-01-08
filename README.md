@@ -5,9 +5,11 @@
 ## Kiến trúc tổng quan
 ![methodology](./methodology.drawio.png)
 
-## Các phần mềm yêu cầu
-1. [Cài đặt Python 3.6]((https://realpython.com/installing-python/))
+## Chuẩn bị data
+Copy data (các file PE đã được gán nhãn sẵn malware/benign) vào folder Data/malware và Data/benign tương ứng.
+Tên của các file là hash sha256 của file PE đó, không có đuôi exe.
 
+## Các phần mềm yêu cầu
 1. Clone repo này
     ```sh
     git clone https://github.com/danhlk/NT505.git
@@ -17,13 +19,13 @@
     cd NT505
     ```
 
-1. Yêu cầu phiên bản pip==8.1.1
+1. Su dung moi truong ao pyenv,
     ```sh
-    pip install pip==8.1.
+    pyenv install 3.7
+    pyenv global 3.7
+    pyenv virtualenv nt505
+    pyenv activate nt505
     ```
-
-1. [Cài đặt môi trường ảo](https://docs.python.org/3/tutorial/venv.html)
-    > Khuyến khích sử dụng môi trường ảo cho từng file requirements bên dưới để tránh xung đột với môi trường thật của host.
 
 1. Cài các thư viện yêu cầu
     ```sh
@@ -34,7 +36,7 @@
 
 ### Tạo mẫu vector đối kháng
 1. Trích xuất đặc trưng cho FeaGAN<br>
-    Đảm bảo các mẫu đã được phân loại và đặt trong thư mục Data/benign và Data/malware 
+    **Đảm bảo các mẫu đã được phân loại và đặt trong thư mục Data/benign và Data/malware**
     ```sh
     python extract_features.py -l debug
     ```

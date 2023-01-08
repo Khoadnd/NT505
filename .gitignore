@@ -17,4 +17,5 @@ adversarial_feature_vector_directory
 gym_malware/envs/utils/samples
 evaded/score
 *.bak
-
+Data
+*.txt
