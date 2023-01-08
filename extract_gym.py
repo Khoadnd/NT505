@@ -31,7 +31,7 @@ def extract_data(path) -> list:
 
     for filename in tqdm(os.listdir(path), desc="Process: ", ascii='#'):
         try:
-            bytez = fetch_file(filename)
+            bytez = fetch_file(path, filename)
             features = feature_extractore2.extract(bytez)
             data.append(numpy.array(features))
             del bytez, features
@@ -45,13 +45,13 @@ def extract_data(path) -> list:
 
 
 print('Extracting benign data...')
-benign_train_data = extract_data(path_benign)
+benign_data = extract_data(path_benign)
 
 print('Extracting malware data...')
-malware_train_data = extract_data(path_malware)
+malware_data = extract_data(path_malware)
 
 print('Saving data...')
-numpy.savetxt('Data/benign_train_data.csv', benign_train_data, delimiter=',')
-numpy.savetxt('Data/malware_train_data.csv', malware_train_data, delimiter=',')
+numpy.savetxt('Data/benign_data.csv', benign_data, delimiter=',')
+numpy.savetxt('Data/malware_data.csv', malware_data, delimiter=',')
 
 print('ALL DONE!')
